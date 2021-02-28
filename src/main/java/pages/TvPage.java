@@ -18,6 +18,7 @@ import static steps.BaseSteps.fillField;
 public class TvPage extends BasePage {
     public static String tv1;
     public static String tv2;
+    WebDriverWait wait = new WebDriverWait(BaseSteps.getDriver(), 30);
 
     public TvPage() {
         PageFactory.initElements(BaseSteps.getDriver(), this);
@@ -37,6 +38,9 @@ public class TvPage extends BasePage {
 
     @FindBy(xpath = "//*[text() = 'LG']")
     WebElement LgSelect;
+
+    @FindBy(xpath = "//*[text() = 'Sony']")
+    WebElement SonySelect;
 
     @FindBy(xpath = "//article")
     WebElement tvCount;
@@ -90,18 +94,22 @@ public class TvPage extends BasePage {
     public void selectProduct(String fieldName) throws InterruptedException {
         switch (fieldName) {
             case "Samsung":
-                WebDriverWait wait = new WebDriverWait(BaseSteps.getDriver(), 30);
                 WebElement selectSamsung = BaseSteps.getDriver().findElement(By.xpath("//*[text() = 'Samsung']"));
                 ((JavascriptExecutor) BaseSteps.getDriver()).executeScript("arguments[0].scrollIntoView(true);", selectSamsung);
                 Thread.sleep(500);
                 selectSamsung.click();
                 break;
             case "LG":
-                WebDriverWait wait1 = new WebDriverWait(BaseSteps.getDriver(), 30);
                 WebElement selectLG = BaseSteps.getDriver().findElement(By.xpath("//*[text() = 'LG']"));
                 ((JavascriptExecutor) BaseSteps.getDriver()).executeScript("arguments[0].scrollIntoView(true);", selectLG);
                 Thread.sleep(500);
                 selectLG.click();
+                break;
+            case "Sony":
+                WebElement selectSony = BaseSteps.getDriver().findElement(By.xpath("//*[text() = 'Sony']"));
+                ((JavascriptExecutor) BaseSteps.getDriver()).executeScript("arguments[0].scrollIntoView(true);", selectSony);
+                Thread.sleep(500);
+                selectSony.click();
                 break;
             default:
                 throw new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
