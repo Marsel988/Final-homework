@@ -20,15 +20,11 @@ public class MarketPage extends BasePage {
     @FindBy(xpath = "//a/*[text() = 'Электроника']")
     WebElement buttonElec;
 
-//    @FindBy(xpath = "//a/*[text() = 'Электроника']/../../..")
-//    WebElement buttonElec;
-
-    @FindBy(xpath = "//div[@data-zone-name= 'menu']//div[@role = 'tablist']")
+    @FindBy(xpath = "//div[@role= 'tablist']/div[@data-tid= 'f2d7f3b0']")
     WebElement marketMenu;
 
     public void selectMarketMenu(String name) throws InterruptedException {
-        Thread.sleep(10);
-        marketMenu.findElement(By.xpath(".//*[text() = '" + name + "']")).click();
+        marketMenu.findElement(By.xpath("//*[text() = '" + name + "']")).click();
     }
 
     public void selectElectronic() throws InterruptedException {

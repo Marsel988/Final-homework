@@ -11,7 +11,7 @@ public class MarketSteps{
         new MarketPage().selectMarketMenu(item);
     }
 
-    @Step("выполнено нажатие на кнопку - Электроника")
+    @Step("выполнено нажатие на кнопку - {}")
     public void selectElectronicButton() throws InterruptedException {
         new MarketPage().selectElectronic();
     }
